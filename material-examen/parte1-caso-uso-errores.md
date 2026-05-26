@@ -25,40 +25,83 @@ Correccion: [Como deberia ser]
 ---
 
 ## Caso de Uso con Errores
+---
 
-### CU-09: Editar Perfil de Usuario
+**CU-09: Editar Perfil de Usuario**
 
-**Actor Principal:** Servidor, Usuario Registrado
+**Actor Principal:** Usuario Registrado
 
-**Descripcion:**  
-El servidor permite que el usuario cambie los datos de su perfil cuando lo necesita.
+
+**Descripción:** El sistema permite al Usuario Registrado modificar su información personal (nombre, email, biografía) para mantener su perfil actualizado. 
 
 **Precondiciones:**
-- El usuario debe existir en el sistema
-- El usuario debe tener al menos 50 seguidores
-- El usuario debe haber cambiado su foto de perfil en las ultimas 24 horas
+
+* El usuario debe haber iniciado sesión en el sistema. 
+
+
+* El perfil del usuario debe estar activo en la base de datos. 
+
+
 
 **Flujo Principal:**
-1. El Usuario Registrado ingresa a su perfil
-2. El Usuario Registrado hace clic en "Editar perfil"
-3. El sistema muestra el formulario con sus datos actuales
-4. El Usuario Registrado modifica nombre, email y biografia
-5. El Usuario Registrado hace clic en "Guardar cambios"
-6. El sistema guarda la informacion inmediatamente
-7. El sistema muestra mensaje "Perfil actualizado"
-8. Fin del caso de uso
+
+1. El Usuario Registrado ingresa a su sección de "Perfil". 
+
+
+2. El Usuario Registrado hace clic en el botón "Editar perfil". 
+
+
+3. El sistema muestra el formulario con los datos actuales cargados. 
+
+
+4. El Usuario Registrado modifica los campos deseados (nombre, email y/o biografía). 
+
+
+5. El Usuario Registrado hace clic en "Guardar cambios". 
+
+
+6. El sistema valida que el formato de los datos sea correcto. 
+
+
+7. El sistema actualiza la información en la base de datos. 
+
+
+8. El sistema muestra el mensaje: "Perfil actualizado exitosamente". 
+
+
+9. Fin del caso de uso. 
+
+
 
 **Flujos Alternativos:**
-- Ninguno
+**A1. Cancelar edición**
 
-**Postcondiciones:**
-- El perfil queda actualizado en la base de datos
-- El sistema envia un email a todos los seguidores del usuario
-- El administrador recibe una alerta instantanea
-- Se abre automaticamente una nueva sesion del usuario en otro navegador
+* En el paso 5, si el usuario decide no guardar:
+* 5a. El Usuario selecciona "Cancelar". 
+
+* 5b. El sistema descarta los cambios y cierra el formulario. 
+
+* 5c. Retorna al paso 1. 
+
 
 **Excepciones:**
-- Si el usuario no tiene permisos, el sistema no hace nada
+**E1. Email con formato inválido**
+
+* En el paso 6, si el sistema detecta un error en el correo:
+* 6a. El sistema muestra un mensaje de error: "Formato de email no válido". 
+
+
+* 6b. El sistema mantiene el formulario abierto para corregir el dato. 
+
+
+
+
+
+**Postcondiciones:**
+
+* Los datos del usuario han sido actualizados permanentemente en la base de datos. 
+
+
 
 ---
 
@@ -71,3 +114,4 @@ Busca errores en:
 - Flujos alternativos
 - Postcondiciones
 - Excepciones
+
